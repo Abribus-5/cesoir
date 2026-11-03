@@ -1,0 +1,20 @@
+# Alternative à Railway : `fly launch --copy-config` puis `fly deploy`
+app = "cesoir"
+primary_region = "cdg"
+
+[build]
+
+[env]
+  NODE_ENV = "production"
+  DATA_DIR = "/data"
+  PORT = "5173"
+
+[[mounts]]
+  source = "cesoir_data"
+  destination = "/data"
+
+[http_service]
+  internal_port = 5173
+  force_https = true
+  auto_stop_machines = false
+  min_machines_running = 1
